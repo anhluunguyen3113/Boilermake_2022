@@ -7,29 +7,15 @@ r = requests.get('https://www.sports-reference.com/cbb/conferences/big-ten/2020-
 
 # Parsing the HTML
 soup = BeautifulSoup(r.content, 'html.parser')
-
 text = soup.get_text()
-
-
-# print(text)
-# p = re.pattern("\a*,\s")
 
 list1 = []
 for line in text.split("\n"):
     if len(re.findall("[0-9]+$", line)) > 0:
         if len(re.findall("\w+,\s\w+\s", line)):
-
             if len(line.split(", ")) == 3:
                 list1.append(line.split(", ")[2])
-
-
-# list1 = list1 + line.split(", ")
-
-
-# print(line)
-
 list2 = []
-
 for i in list1:
     word = re.findall("[a-z\s]+", i.lower())
     print(word)
@@ -41,6 +27,14 @@ for i in list1:
     dict1["team2"] = word[1]
     dict1["team2 score"] = num[2]
     list2.append(dict1)
-
 print(list2)
 
+
+
+
+# r = requests.get('https://bigten.org/stats.aspx?path=mbball&year=2021')
+#
+#  # Parsing the HTML
+# soup = BeautifulSoup(r.content, 'html.parser')
+# text = soup.prettify()
+# print(text)
