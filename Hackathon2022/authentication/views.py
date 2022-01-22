@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
 import re
-from ..Hackathon2022 import settings
+#from ..Hackathon2022 import settings
 
 
 # Create your views here.
