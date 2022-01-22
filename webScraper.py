@@ -1,7 +1,7 @@
 import requests
 import re
 from bs4 import BeautifulSoup
-
+import json
 # Making a GET request
 r = requests.get('https://www.sports-reference.com/cbb/conferences/big-ten/2020-schedule.html')
 
@@ -9,31 +9,38 @@ r = requests.get('https://www.sports-reference.com/cbb/conferences/big-ten/2020-
 soup = BeautifulSoup(r.content, 'html.parser')
 
 text = soup.get_text()
-#print(text)
-#p = re.pattern("\a*,\s")
 
 
+# print(text)
+# p = re.pattern("\a*,\s")
+
+list1 = []
 for line in text.split("\n"):
     if len(re.findall("[0-9]+$", line)) > 0:
         if len(re.findall("\w+,\s\w+\s", line)):
-            print(line)
+
+            if len(line.split(", ")) == 3:
+                list1.append(line.split(", ")[2])
 
 
+# list1 = list1 + line.split(", ")
 
 
+# print(line)
 
+list2 = []
 
+for i in list1:
+    word = re.findall("[a-z\s]+", i.lower())
+    print(word)
+    num = re.findall("[0-9]+", i)
+    dict1 = {}
+    dict1["year"] = num[0]
+    dict1["team1"] = word[0]
+    dict1["team1 score"] = num[1]
+    dict1["team2"] = word[1]
+    dict1["team2 score"] = num[2]
+    list2.append(dict1)
 
+print(list2)
 
-
-
-#print(soup.prettify())
-
-
-# for para in soup.find_all("p"):
-#     print(para.get_text())
-
-
-
-# use the child attribute to get
-# the name of the child tag
