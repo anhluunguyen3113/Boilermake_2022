@@ -13,9 +13,7 @@ def homes(request):
 
 
 def signup(request):
-    print('Working')
     if request.method == 'POST':
-        print('working2')
         username = request.POST['username']
         fname = request.POST['fname']
         lname = request.POST['lname']
