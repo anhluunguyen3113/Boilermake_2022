@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home3</title>
+</head>
+<body>
+
+
+    <table>
+  <tr>
+    <th>Year</th>
+    <th>Home Team</th>
+    <th>Pts</th>
+    <th>Away Team</th>
+    <th>Pts</th>
+  </tr>
+
+{% block content %}
+  {% for c in content %}
+
+  <tr>
+    <th>{{c.year}}</th>
+    <th>{{c.team1}}</th>
+    <th>{{c.team1score}}</th>
+    <th>{{c.team2}}</th>
+    <th>{{c.team2score}}</th>
+  </tr>
+
+  {% endfor %}
+{% endblock %}
+
+
+
+
+
+
+
+</body>
+</html>
