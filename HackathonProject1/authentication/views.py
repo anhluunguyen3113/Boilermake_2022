@@ -1,8 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
+from ..Hackathon2022 import settings
 
 
 # Create your views here.
@@ -24,11 +26,37 @@ def signup(request):
         myuser.first_name = fname
         myuser.last_name = lname
 
+        if User.objects.filter(username =username):
+            messages.error(request, "Username taken, please input another username")
+            return redirect('home')
 
+        if User.objects.filter(email =email):
+            messages.error(request, "Email already registered")
+            return redirect('home')
+
+        if len(username) > 10:
+            messages.error(request, "Username must be under 10 characters")
+
+        if pass1 != pass2:
+            messages.error(request, "Passwords do not match")
+
+        if not username.isalnum():
+            messages.error(request, "Username must be alphanumeric")
+            return redirect('home')
 
         myuser.save()
 
         messages.success(request, 'Your account has been successfully created')
+
+        #Welcome email
+
+        subject = 'Welcome to boilermake - Django login'
+        message = 'Hello ' + myuser.first_name + '!!\n' + 'Welcome to boilermake2022!\n' + \
+                  'Thank you for visiting our website \n We have also sent you a confirmation email\n ' \
+                  'please confirm your email\n Thank you!'
+        from_email = settings.EMAIL_HOST_USER
+        to_list = [myuser.email]
+        send_mail(subject, message, from_email, to_list, fail_silently=True)
 
         return redirect('signin')
 
