@@ -39,15 +39,22 @@ button{
     transition-duration: 0.4s;
 }
 
+a:link{
+    text-decoration: none;
+}
+
 a:visited{
     color: thistle;
+    text-decoration: none;
 }
 
 a:hover{
     color:slategray;
+    text-decoration: none;
 }
 
 a:active{
     color:violet;
+    text-decoration: none;
 }
   
