@@ -8,7 +8,10 @@
         color:Tomato;
         background-color: pink;
         border: 2px solid salmon;
-        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(-400%);
+        font-family: Copperplate, Lucida Console, fantasy;
         font-size:50px;
         height: 70px;
         width: 60%;
@@ -16,12 +19,61 @@
         font-weight:normal;
         }
 
+        p1 {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(-500%);
+        font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+        p2 {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(-350%);
+        font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+        p3 {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(-200%);
+        font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+        p4 {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+        p5 {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(100%);
+        font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+        p6 {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(250%);
+        font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+        p7 {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-40%) translateY(400%);
+        font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+
+
         label {
         cursor: pointer;
         color: Tomato;
-        background-color: pink;
-        border: 2px solid salmon;
-        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: Lucida Console, monospace;
         font-size:15px;
         font-weight:normal;
         }
@@ -64,31 +116,31 @@
     <h3>Sign Up</h3>
     <form action="/signup" method="post">
     {% csrf_token %}
-        <label for="">Username</label>
-        <input type="text" id="username" name="username" placeholder="Create a username (Only letters or numbers)" Required>
+        <p1><label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Create a username (Only letters or numbers)" Required></p1>
         <br>
 
-        <label for="">First Name</label>
-        <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" Required>
+        <p2><label for="">First Name</label>
+        <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" Required></p2>
         <br>
 
-        <label for="">Last Name</label>
-        <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name" Required>
+        <p3><label for="">Last Name</label>
+        <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name" Required></p3>
         <br>
 
-        <label for="">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email address" Required>
+        <p4><label for="">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" Required></p4>
         <br>
 
-        <label for="">Password</label>
-        <input type="password" id="pass1" name="pass1" placeholder="Create a password" Required>
+        <p5><label for="">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Create a password" Required></p5>
         <br>
 
-        <label for="">Confirm your password</label>
-        <input type="password" id="pass2" name="pass2" placeholder="Confirm your password" Required>
+        <p6><label for="">Confirm your password</label>
+        <input type="password" id="pass2" name="pass2" placeholder="Confirm your password" Required></p6>
         <br>
 
-        <button type="submit">Sign Up</button>
+        <p7><button type="submit">Sign Up</button></p7>
 
     </form>
 </body>
