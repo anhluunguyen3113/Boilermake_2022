@@ -32,13 +32,50 @@ import json
 
 
 
-r = requests.get('https://www.espn.com/mens-college-basketball/standings/_/group/7')
+r = requests.get('https://www.sports-reference.com/cbb/conferences/big-ten/2022.html')
 
  # Parsing the HTML
 soup = BeautifulSoup(r.content, 'html.parser')
-text = soup.prettify()
-print(text)
+text = soup.get_text()
+#print(text)
+
+list1 = []
+for line in text.split("\n"):
+    if len(re.findall("[0-9]+$", line)) > 0:
+        if len(re.findall("[0-9]\w", line)):
+            if len(re.findall("\/", line)) > 0:
+                break;
+            else:
+                if len(re.findall("[0-9][a-z]", line.lower())) > 0:
+                    dict1 = {}
+                    num = re.findall("[0-9]+", line)
+                    word = re.findall("[a-z\s]+", line.lower())
+                    dict1["ranking"] = num[0]
+                    print(word[0])
+                    dict1["name"] = word[0]
+                    # print(line)
+                    # print(num)
+                    wl = num[2][3:]
+                    if len(wl) == 2:
+                        dict1["win"] = wl[0]
+                        dict1["loss"] = wl[1]
+                        # print("win " + wl[0])
+                        # print("loss " + wl[1])
+                    elif wl[0] == '1':
+                        dict1["win"] = wl[0:2]
+                        dict1["loss"] = wl[2]
+                        # print("win " + wl[0:2])
+                        # print("loss " + wl[2])
+                    else:
+                        dict1["win"] = wl[0]
+                        dict1["loss"] = wl[1:]
+                        # print("win " + wl[0])
+                        # print("loss " + wl[1:])
+                    list1.append(dict1)
+print(list1)
 
 
-# page = soup.find('p')
-# print(page)
+
+
+
+
