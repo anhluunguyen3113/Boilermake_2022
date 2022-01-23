@@ -5,8 +5,8 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
-import re
-import BeautifulSoup
+#import re
+#from bs4 import BeautifulSoup
 
 
 # Create your views here.
@@ -32,11 +32,12 @@ def signup(request):
             messages.error(request, "Email already registered")
             return redirect('home')
 
-        if len(username) > 10:
+        if len(username) > 20:
             messages.error(request, "Username must be under 10 characters")
 
         if pass1 != pass2:
             messages.error(request, "Passwords do not match")
+            return redirect('home')
 
         if not username.isalnum():
             messages.error(request, "Username must be alphanumeric")
@@ -89,28 +90,54 @@ def signout(request):
     messages.success(request, 'Logged out successfully')
     return redirect('home')
 
-def home2(request):
-    r = requests.get('https://www.sports-reference.com/cbb/conferences/big-ten/2020-schedule.html')
-    soup = BeautifulSoup(r.content, 'html.parser')
-    text = soup.get_text()
-    list1 = []
-    for line in text.split("\n"):
-        if len(re.findall("[0-9]+$", line)) > 0:
-            if len(re.findall("\w+,\s\w+\s", line)):
-                if len(line.split(", ")) == 3:
-                    list1.append(line.split(", ")[2])
-    list2 = []
-    for i in list1:
-        word = re.findall("[a-z\s]+", i.lower())
-        print(word)
-        num = re.findall("[0-9]+", i)
-        dict1 = {}
-        dict1["year"] = num[0]
-        dict1["team1"] = word[0]
-        dict1["team1score"] = num[1]
-        dict1["team2"] = word[1]
-        dict1["team2score"] = num[2]
-        list2.append(dict1)
-    #print(list2)
-    return render(request, "authentication/home2.html", {'content': list2})
+
+# def stats(request):
+#     r = requests.get('https://www.sports-reference.com/cbb/conferences/big-ten/2020-schedule.html')
+#     soup = BeautifulSoup(r.content, 'html.parser')
+#     text = soup.get_text()
+#     list1 = []
+#     for line in text.split("\n"):
+#         if len(re.findall("[0-9]+$", line)) > 0:
+#             if len(re.findall("\w+,\s\w+\s", line)):
+#                 if len(line.split(", ")) == 3:
+#                     list1.append(line.split(", ")[2])
+#     list2 = []
+#     for i in list1:
+#         word = re.findall("[a-z\s]+", i.lower())
+#         print(word)
+#         num = re.findall("[0-9]+", i)
+#         dict1 = {}
+#         dict1["year"] = num[0]
+#         dict1["team1"] = word[0]
+#         dict1["team1score"] = num[1]
+#         dict1["team2"] = word[1]
+#         dict1["team2score"] = num[2]
+#         list2.append(dict1)
+#     #print(list2)
+#     return render(request, "authentication/stats.html", {'content': list2})
+
+# def home2(request):
+#     r = requests.get('https://www.sports-reference.com/cbb/conferences/big-ten/2020-schedule.html')
+#     soup = BeautifulSoup(r.content, 'html.parser')
+#     text = soup.get_text()
+#     list1 = []
+#     for line in text.split("\n"):
+#         if len(re.findall("[0-9]+$", line)) > 0:
+#             if len(re.findall("\w+,\s\w+\s", line)):
+#                 if len(line.split(", ")) == 3:
+#                     list1.append(line.split(", ")[2])
+#     list2 = []
+#     for i in list1:
+#         word = re.findall("[a-z\s]+", i.lower())
+#         print(word)
+#         num = re.findall("[0-9]+", i)
+#         dict1 = {}
+#         dict1["year"] = num[0]
+#         dict1["team1"] = word[0]
+#         dict1["team1score"] = num[1]
+#         dict1["team2"] = word[1]
+#         dict1["team2score"] = num[2]
+#         list2.append(dict1)
+#     #print(list2)
+#     return render(request, "authentication/home2.html", {'content': list2})
 
