@@ -38,3 +38,16 @@ button{
     font: size 18px;
     transition-duration: 0.4s;
 }
+
+a:visited{
+    color: thistle;
+}
+
+a:hover{
+    color:slategray;
+}
+
+a:active{
+    color:violet;
+}
+  
