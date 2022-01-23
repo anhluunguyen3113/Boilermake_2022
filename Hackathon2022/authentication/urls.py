@@ -23,5 +23,6 @@ urlpatterns = [
     path('minnesota', views.minnesota, name='Minnesota'),
     path('nebraska', views.nebraska, name='Nebraska'),
 
+    path('list', views.list, name='College List'),
 
 ]

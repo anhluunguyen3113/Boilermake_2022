@@ -215,6 +215,10 @@ def nebraska(request):
             return render(request, "authentication/nebraska.html", {'content': i})
 
 
+def list(request):
+    return render(request, "authentication/list.html")
+
+
 def static():
     r = requests.get('https://www.sports-reference.com/cbb/conferences/big-ten/2022.html')
     soup = BeautifulSoup(r.content, 'html.parser')
