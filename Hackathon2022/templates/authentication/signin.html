@@ -3,8 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        h3{
+        color:white;
+
+        font-size: 40px;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(-500%);
+        font-family: Copperplate, Lucida Console, fantasy;
+        font-weight:normal;
+        }
+
+        p1{
+        font-size: 20px;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(-450%);
+        font-family: Lucida Console, monospace;
+        }
+
+        p2{
+        font-size: 20px;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(-300%);
+        font-family: Lucida Console, monospace;
+        }
+
+        p3{
+        font-size: 20px;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        font-family: Lucida Console, monospace;
+        }
+
+        button{
+        transition-duration: 0.4s;
+        }
+
+        button:hover{
+        background-color:plum;
+        color:thistle;
+        border: 2px solid transparent;
+        }
+
+
+        button{
+        background-color: powderblue;
+        border:skyblue;
+        color:white;
+        font-family: Lucida Console, monospace;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration:steelblue;
+        display: inline-table;
+        font: size 18px;
+        transition-duration: 0.4s;
+        }
+        label {
+        cursor: pointer;
+        color: white;
+
+        font-size:15px;
+        font-weight:normal;
+        }
+    </style>
 </head>
-<body>
+<body style="background-color:#34568B;">
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
         <strong>Message:</strong> {{ message }}
@@ -17,15 +84,15 @@
     <h3>Sign In</h3>
     <form action="/signin" method="post">
     {% csrf_token %}
-        <label for="">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter your username" Required>
+        <p1><label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" Required></p1>
         <br>
 
-        <label for="">Password</label>
-        <input type="password" id="pass1" name="pass1" placeholder="Enter your password" Required>
+        <p2><label for="">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Enter your password" Required></p2>
         <br>
 
-        <button type="submit">Sign In</button>
+        <p3><button type="submit">Sign In</button></p3>
 
     </form>
 </body>
