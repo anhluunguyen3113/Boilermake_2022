@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    h3 {
+    font-size: 40px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(-500%);
+    font-family: Copperplate, Lucida Console, fantasy;
+    }
+
+    p {
+    font-size: 20px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(-400%);
+    font-family: Lucida Console, monospace;
+    }
+
+    firstname {
+    font-size: 20px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(-150%);
+    font-family: Lucida Console, monospace;
+    }
+
+    lastname {
+    font-size: 20px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(25%);
+    font-family: Lucida Console, monospace;
+    }
+
+    email {
+    font-size: 20px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(200%);
+    font-family: Lucida Console, monospace;
+    }
+
+    pass {
+    font-size: 20px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(350%);
+    font-family: Lucida Console, monospace;
+    }
+
+    passconfirm {
+    font-size: 20px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(500%);
+    font-family: Lucida Console, monospace;
+    }
+
+    button {
+    font-size: 20px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(600%);
+    font-family: Lucida Console, monospace;
+    }
+    </style>
+</head>
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <h3><center>Sign Up</center></h3>
+    <form action="/signup" method="post">
+    {% csrf_token %}
+        <p><label for="">Username</label>
+        <input type="text" id="username" name="username" placeholder="Create a username (Only letters or numbers)" Required>
+        <br></p>
+
+        <firstname><label for="">First Name</label>
+        <input type="text" id="fname" name="fname" placeholder="Enter Your First Name" Required>
+        <br></firstname>
+
+        <lastname><label for="">Last Name</label>
+        <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name" Required>
+        <br></lastname>
+
+        <email><label for="">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" Required>
+        <br></email>
+
+        <pass><label for="">Password</label>
+        <input type="password" id="pass1" name="pass1" placeholder="Create a password" Required>
+        <br></pass>
+
+        <passconfirm><label for="">Confirm your password</label>
+        <input type="password" id="pass2" name="pass2" placeholder="Confirm your password" Required>
+        <br></passconfirm>
+
+        <button type="submit">Sign Up</button> </span>
+
+    </form>
+</body>
+</html>
