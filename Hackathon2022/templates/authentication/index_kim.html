@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authentication</title>
+    <style>
+        h3 {
+            font-size: 40px;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translateX(-50%) translateY(-200%);
+            font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+        h4 {
+            font-size: 20px;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translateX(-50%) translateY(10%);
+            font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+        h5 {
+            font-size: 40px;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translateX(-50%) translateY(-100%);
+            font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+        h6 {
+            font-size: 40px;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+        h7 {
+            font-size: 40px;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translateX(-50%) translateY(250%);
+            font-family: Copperplate, Lucida Console, fantasy;
+        }
+
+        h8 {
+            font-size: 40px;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translateX(-50%) translateY(150%);
+            font-family: Copperplate, Lucida Console, fantasy;
+        }
+        h9 {
+            font-size: 40px;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translateX(-50%) translateY(-300%);
+            font-family: Copperplate, Lucida Console, fantasy;
+        }
+    </style>
+</head>
+<body>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    <h3>Welcome to our application!</h3>
+
+    {% if user.is_authenticated %}
+    <h9>Hello {{ fname }}</h9>
+    <h4>You are successfully logged in</h4>
+    <h7><button type="submit"> <a href="/signout"> SignOut</a></button></h7>
+    <h8><button type="submit"> <a href="/stats"> Statistics</a></button></h8>
+    {% else %}
+    <h5><button type="submit"> <a href="/signup"> SignUp</a></button></h5>
+    <h6><button type="submit"> <a href="/signin"> SignIn</a></button></h6>
+    {% endif %}
+
+</body>
+</html>
