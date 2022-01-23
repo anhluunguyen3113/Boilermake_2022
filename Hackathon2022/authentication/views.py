@@ -54,13 +54,13 @@ def signup(request):
 
         # Welcome email
 
-        subject = 'Welcome to boilermake - Django login'
-        message = 'Hello ' + myuser.first_name + '!!\n' + 'Welcome to boilermake2022!\n' + \
-                  'Thank you for visiting our website \n We have also sent you a confirmation email\n ' \
-                  'please confirm your email\n Thank you!'
-        # from_email = settings.EMAIL_HOST_USER
-        to_list = [myuser.email]
-        send_mail(subject, message, to_list, fail_silently=True)
+        # subject = 'Welcome to boilermake - Django login'
+        # message = 'Hello ' + myuser.first_name + '!!\n' + 'Welcome to boilermake2022!\n' + \
+        #           'Thank you for visiting our website \n We have also sent you a confirmation email\n ' \
+        #           'please confirm your email\n Thank you!'
+        # # from_email = settings.EMAIL_HOST_USER
+        # to_list = [myuser.email]
+        # send_mail(subject, message, to_list, fail_silently=True)
 
         return redirect('signin')
 
